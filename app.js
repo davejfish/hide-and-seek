@@ -50,35 +50,20 @@ function resetClasses() {
     boulderButton.classList.remove('face', 'guessed');
 }
 
+const spotMap = new Map();
+
+spotMap.set('tree', treeButton);
+spotMap.set('shed', shedButton);
+spotMap.set('boulder', boulderButton);
+
 function displayHidingSpots() {
     // clear existing classes
     resetClasses();
-
-    // add face class
-    if (spot === 'tree') {
-        treeButton.classList.add('face');
+    if (spot) {
+        spotMap.get(spot).classList.add('face');
     }
-    if (spot === 'shed') {
-        shedButton.classList.add('face');
-    }
-    if (spot === 'boulder') {
-        boulderButton.classList.add('face');
-    }
-
-    // *** Implement adding the guessed ***
-    // Similar to adding face class, conditionally
-    // add the 'guessed' class if the guessed state
-    // matches for tree, shed, or boulder
-    // ***
-
-    if (guessed === 'tree') {
-        treeButton.classList.add('guessed');
-    }
-    if (guessed === 'shed') {
-        shedButton.classList.add('guessed');
-    }
-    if (guessed === 'boulder') {
-        boulderButton.classList.add('guessed');
+    if (guessed) {
+        spotMap.get(guessed).classList.add('guessed');
     }
 
     // Clear the face and guessed classes after two seconds
