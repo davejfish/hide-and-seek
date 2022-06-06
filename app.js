@@ -20,10 +20,12 @@ function handleGuess(guess) {
     
     // If the result is 1 (win), increase wins state
     if (result === 1) {
-        wins ++;
+        wins++;
+        console.log('wins = ', wins);
     }
     // Increase total state 
-    total ++;
+    total++;
+    console.log('total = ', total);
     // ***
 
 
