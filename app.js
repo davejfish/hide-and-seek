@@ -12,11 +12,20 @@ let timeout = 0;
 function handleGuess(guess) {
     // *** Implement Missing Functionality ***
     // Generate a random spot based on spots array
+    spot = getRandomItem(spots);
+
     // Use the score function to get a result for guess and actual spot
     // (You also need to implement the score function)
+    let result = score(guessed, spot);
+    
     // If the result is 1 (win), increase wins state
+    if (result === 1) {
+        wins ++;
+    }
     // Increase total state 
+    total ++;
     // ***
+
 
     // Store the guess so we can apply special background
     guessed = guess;
