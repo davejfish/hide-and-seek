@@ -62,6 +62,15 @@ function displayHidingSpots() {
     // matches for tree, shed, or boulder
     // ***
 
+    if (guessed === 'tree') {
+        treeButton.classList.add('guessed');
+    }
+    if (guessed === 'shed') {
+        shedButton.classList.add('guessed');
+    }
+    if (guessed === 'boulder') {
+        boulderButton.classList.add('guessed');
+    }
 
     // Clear the face and guessed classes after two seconds
     // store the timeout so we can clear if user makes
