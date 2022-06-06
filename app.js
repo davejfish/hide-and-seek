@@ -16,7 +16,7 @@ function handleGuess(guess) {
 
     // Use the score function to get a result for guess and actual spot
     // (You also need to implement the score function)
-    let result = score(guessed, spot);
+    let result = score(guess, spot);
     
     // If the result is 1 (win), increase wins state
     if (result === 1) {
