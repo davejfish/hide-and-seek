@@ -21,11 +21,9 @@ function handleGuess(guess) {
     // If the result is 1 (win), increase wins state
     if (result === 1) {
         wins++;
-        console.log('wins = ', wins);
     }
     // Increase total state 
     total++;
-    console.log('total = ', total);
     // ***
 
 
@@ -106,6 +104,10 @@ shedButton.addEventListener('click', () => {
 
 // *** Implement the Results Component! ***
 // 1. Reference needed DOM elements
+let winsDisplay = document.getElementById('wins-display');
+let lossesDisplay = document.getElementById('losses-display');
+let totalDisplay = document.getElementById('total-display');
+console.log(winsDisplay, lossesDisplay, totalDisplay);
 // 2. Implement the displayResults function that updates
 //    the component total, winds, and losses
 //    (derive losses from totals and wins)
