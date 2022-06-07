@@ -12,11 +12,20 @@ let timeout = 0;
 function handleGuess(guess) {
     // *** Implement Missing Functionality ***
     // Generate a random spot based on spots array
+    spot = getRandomItem(spots);
+
     // Use the score function to get a result for guess and actual spot
     // (You also need to implement the score function)
+    let result = score(guess, spot);
+    
     // If the result is 1 (win), increase wins state
+    if (result === 1) {
+        wins++;
+    }
     // Increase total state 
+    total++;
     // ***
+
 
     // Store the guess so we can apply special background
     guessed = guess;
@@ -41,27 +50,21 @@ function resetClasses() {
     boulderButton.classList.remove('face', 'guessed');
 }
 
+const spotMap = new Map();
+
+spotMap.set('tree', treeButton);
+spotMap.set('shed', shedButton);
+spotMap.set('boulder', boulderButton);
+
 function displayHidingSpots() {
     // clear existing classes
     resetClasses();
-
-    // add face class
-    if (spot === 'tree') {
-        treeButton.classList.add('face');
+    if (spot) {
+        spotMap.get(spot).classList.add('face');
     }
-    if (spot === 'shed') {
-        shedButton.classList.add('face');
+    if (guessed) {
+        spotMap.get(guessed).classList.add('guessed');
     }
-    if (spot === 'boulder') {
-        boulderButton.classList.add('face');
-    }
-
-    // *** Implement adding the guessed ***
-    // Similar to adding face class, conditionally
-    // add the 'guessed' class if the guessed state
-    // matches for tree, shed, or boulder
-    // ***
-
 
     // Clear the face and guessed classes after two seconds
     // store the timeout so we can clear if user makes
@@ -86,12 +89,18 @@ shedButton.addEventListener('click', () => {
 
 // *** Implement the Results Component! ***
 // 1. Reference needed DOM elements
+let winsDisplay = document.getElementById('wins-display');
+let lossesDisplay = document.getElementById('losses-display');
+let totalDisplay = document.getElementById('total-display');
+
 // 2. Implement the displayResults function that updates
 //    the component total, winds, and losses
 //    (derive losses from totals and wins)
 // ***
 function displayResults() {
-
+    winsDisplay.textContent = wins;
+    lossesDisplay.textContent = total - wins;
+    totalDisplay.textContent = total;
 }
 
 
